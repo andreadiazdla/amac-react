@@ -1,0 +1,57 @@
+/* VARIABLES: colores, fuentes y espaciados (de Figma). */
+
+/* ==========================================================================
+   1. FUENTES
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+:root {
+    /* ======================================================================
+       2. COLORES
+       ====================================================================== */
+    --color-azul-marino: #202945;
+    --color-azul-marino-claro: #2F3751;
+    --color-azul-claro: #CAE4EF;
+    --color-coral: #FF815C;
+    --color-amarillo-claro: #FDDAAD;
+    --color-blanco: #FFFFFF;
+    --color-gris: #A8A8A8;
+    --color-gris-claro: #F1EFEE;
+
+    /* ======================================================================
+       3. TIPOGRAFÍA
+       ====================================================================== */
+    --fuente-base: "Atkinson Hyperlegible", system-ui, sans-serif;
+    --texto-base: 1.25rem;
+    --texto-h2: 1.75rem;
+    --texto-h1: 2.25rem;
+
+    /* ======================================================================
+       4. ESPACIADOS
+       ====================================================================== */
+    /* Elementos cercanos: íconos y textos, etiquetas, botones pequeños o elementos dentro de un componente. */
+    --espacio-s: 0.5rem;
+    /* Elementos relacionados: campos de formularios, tarjetas, botones o elementos dentro de un contenedor. */
+    --espacio-m: 1rem;
+    /* Secciones, bloques de contenido o componentes principales que necesitan más espacio. */
+    --espacio-l: 2rem;
+
+    /* ======================================================================
+       5. BORDES Y SOMBRAS
+       ====================================================================== */
+    --radio: 0.5rem;
+    --sombra: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ==========================================================================
+   6. TIPOGRAFÍA EN PANTALLAS GRANDES
+   ========================================================================== */
+
+@media (min-width: 90rem) {
+    :root {
+        --texto-base: 1.5rem;
+        --texto-h2: 2rem;
+        --texto-h1: 2.5rem;
+    }
+}

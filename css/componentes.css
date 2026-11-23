@@ -1,0 +1,1122 @@
+/* COMPONENTES: piezas reutilizables (botones, tarjetas, formularios y estados).
+
+   ÍNDICE
+    1. BOTONES
+    2. ICONOS
+    3. ENLACES
+    4. ESTADOS Y ETIQUETAS
+    5. AVISOS
+    6. TARJETAS
+    7. TARJETA DE VACANTE (LISTADO)
+    8. DETALLE DE VACANTE
+    9. BUSCADOR Y FILTROS
+   10. FORMULARIOS: CAMPOS
+   11. FORMULARIOS: OPCIONES Y CASILLAS
+   12. FORMULARIOS: EXPERIENCIA Y CHIPS
+   13. FORMULARIOS: CARGA DE ARCHIVOS
+   14. DECISIÓN (ACEPTAR / RECHAZAR)
+   15. MENÚ DESPLEGABLE
+   16. PASOS
+   17. ELEMENTOS DE APOYO
+*/
+
+/* ==========================================================================
+   1. BOTONES
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    width: 13.125rem; /* 210px */
+    min-height: 3.5rem; /* 56px */
+    max-width: 100%;
+    box-sizing: border-box;
+
+    padding: var(--espacio-s) var(--espacio-m);
+    justify-content: center;
+    align-items: center;
+    gap: var(--espacio-s);
+    font-weight: 700;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    border-radius: var(--radio);
+}
+
+.btn-primario {
+    background-color: var(--color-azul-marino);
+    color: var(--color-blanco);
+}
+
+.btn-secundario {
+    background-color: var(--color-coral);
+    color: var(--color-azul-marino);
+}
+
+.btn-terciario {
+    background-color: var(--color-gris-claro);
+    color: var(--color-azul-marino);
+}
+
+.btn-contacto {
+    width: 3.5rem; /* 56px */
+    height: 3.5rem; /* 56px */
+    border-radius: 50%;
+    background-color: var(--color-coral);
+    color: var(--color-azul-marino);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* El texto del botón de contacto solo se ve en desktop */
+.texto-contacto {
+    display: none;
+}
+
+.btn-primario:hover {
+    background-color: #303D60;
+}
+
+.btn-contacto:hover,
+.btn-secundario:hover {
+    background-color: #FF9F83;
+}
+
+.btn-terciario:hover {
+    background-color: #EDECEC;
+}
+
+.btn:disabled {
+    background-color: var(--color-gris);
+    color: #8C8C8C;
+    cursor: not-allowed;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn-auto {
+    width: auto;
+}
+
+/* Fila de botones */
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: var(--espacio-m);
+}
+
+.btn-contorno {
+    border: 2px solid var(--color-gris);
+    background-color: var(--color-blanco);
+    color: var(--color-azul-marino);
+}
+
+.btn-contorno:hover {
+    background-color: var(--color-gris-claro);
+}
+
+.grupo-botones {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-m);
+}
+
+.grupo-botones-principal {
+    order: -1;
+}
+
+@media (min-width: 48rem) {
+    .btn-contacto {
+        width: 13.125rem; /* 210px */
+        min-height: 3.5rem; /* 56px */
+        border-radius: var(--radio);
+    }
+
+    /* El texto del botón de contacto solo se ve en desktop */
+    .texto-contacto {
+        display: inline;
+    }
+
+    .grupo-botones {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .grupo-botones-item {
+        flex: 1 1 10.75rem;
+    }
+
+    .grupo-botones-principal {
+        flex: 2 1 14.75rem;
+        order: 0;
+    }
+}
+
+
+/* ==========================================================================
+   2. ICONOS
+   ========================================================================== */
+
+.icono {
+    width: 1.5rem; /* 24px */
+    height: 1.5rem; /* 24px */
+    object-fit: contain;
+}
+
+
+/* ==========================================================================
+   3. ENLACES
+   ========================================================================== */
+
+.enlace-accion,
+.enlace-destacado,
+.casilla-etiqueta a {
+    color: var(--color-azul-marino);
+}
+
+.enlace-accion {
+    display: inline-flex;
+    align-items: center;
+    min-height: 2.75rem;
+    border: 0;
+    background-color: transparent;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.enlace-destacado {
+    display: inline-block;
+    padding: 0.75rem 0;
+    font-weight: 700;
+}
+
+.enlace-destacado-centrado {
+    text-align: center;
+}
+
+.fila-enlaces {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem var(--espacio-m);
+}
+
+
+/* ==========================================================================
+   4. ESTADOS Y ETIQUETAS
+   ========================================================================== */
+
+/* Estilo general para todos los estados */
+.estado {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 0.25rem;
+
+    padding: 0.125rem var(--espacio-s);
+
+    font-size: var(--texto-base);
+    line-height: 1.4;
+    font-weight: 700;
+    text-align: center;
+}
+
+.estado-pendiente,
+.estado-pausada {
+    background-color: var(--color-amarillo-claro);
+}
+
+.estado-aceptada,
+.estado-activa {
+    background-color: var(--color-azul-claro);
+}
+
+.estado-rechazada,
+.estado-cerrada {
+    background-color: var(--color-coral);
+}
+
+.estado-revision {
+    background-color: var(--color-amarillo-claro);
+}
+
+.estado-cancelada {
+    background-color: var(--color-gris-claro);
+}
+
+.etiqueta {
+    padding: 0.25rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: var(--color-coral);
+}
+
+
+/* ==========================================================================
+   5. AVISOS
+   ========================================================================== */
+
+/* Aviso amarillo, con aviso-info es azul */
+.aviso {
+    padding: var(--espacio-m);
+    border-radius: var(--radio);
+    background-color: var(--color-amarillo-claro);
+}
+
+.aviso-info {
+    background-color: var(--color-azul-claro);
+}
+
+.aviso-telefono {
+    padding: var(--espacio-m);
+    border: 1px solid var(--color-gris);
+    border-radius: 0.75rem;
+    box-shadow: var(--sombra);
+}
+
+.aviso-enviada {
+    padding: var(--espacio-m);
+    border-radius: var(--radio);
+    background-color: var(--color-azul-claro);
+}
+
+.aviso-enviada p {
+    margin-top: 0.25rem;
+}
+
+.aviso-titulo {
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+}
+
+@media (min-width: 64rem) {
+    .aviso-telefono,
+    .aviso-enviada {
+        font-size: var(--texto-base);
+    }
+
+    .aviso-enviada,
+    .solicitudes-boton {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   6. TARJETAS
+   ========================================================================== */
+
+.tarjeta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-m);
+
+    width: 100%;
+    padding: var(--espacio-m);
+
+    background-color: var(--color-blanco);
+    border: 1.5px solid var(--color-gris);
+    border-radius: var(--radio);
+}
+
+.tarjeta-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-s);
+    min-width: 0;
+}
+
+/* Información y descripciones */
+.tarjeta p {
+    margin: 0;
+    overflow-wrap: anywhere;
+}
+
+/* Contenedor de estados y botones */
+.tarjeta-acciones {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-m);
+    width: 100%;
+}
+
+.tarjeta-acciones .btn,
+.tarjeta-acciones .estado {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.vacante-ampliada {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-m);
+    width: 100%;
+    padding: var(--espacio-m);
+    background-color: var(--color-blanco);
+    border: 1.5px solid var(--color-gris);
+    border-radius: var(--radio);
+    margin-bottom: var(--espacio-m);
+}
+
+/* Parte de la tarjeta que ocupa todo el ancho */
+.tarjeta-seccion {
+    width: 100%;
+}
+
+.vacante-ampliada:has(#medioTelefono:checked) .campo-telefono {
+    display: flex;
+}
+
+@media (min-width: 48rem) {
+    .tarjeta {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: var(--espacio-m);
+
+        flex-wrap: wrap;
+    }
+
+    .tarjeta-contenido {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .tarjeta-acciones {
+        width: 13.125rem; /* 210px */
+        align-items: flex-end;
+        gap: var(--espacio-s);
+    }
+
+    .tarjeta-acciones .btn,
+    .tarjeta-acciones .estado {
+        width: fit-content;
+    }
+
+    .vacante-ampliada {
+        padding: var(--espacio-l);
+    }
+}
+
+
+/* ==========================================================================
+   7. TARJETA DE VACANTE (LISTADO)
+   ========================================================================== */
+
+.vacante {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-m);
+    min-width: 0;
+    padding: var(--espacio-m) var(--espacio-m) 1.25rem;
+    border: 1px solid var(--color-gris);
+    border-radius: var(--espacio-m);
+    background-color: var(--color-blanco);
+    overflow-wrap: anywhere;
+}
+
+.empresa {
+    margin-top: 0.2rem;
+}
+
+.condiciones {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.4rem;
+}
+
+.inicio .ubicacion,
+.inicio .jornada {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-s);
+}
+
+.inicio .jornada {
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.acciones-vacante {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-s);
+    margin-top: auto;
+}
+
+.acciones-vacante .btn {
+    width: 100%;
+}
+
+@media (min-width: 64rem) {
+    .vacante {
+        min-height: 25.75rem;
+        font-size: 1.5rem;
+        line-height: 1.25;
+    }
+
+    .vacante h2 {
+        font-size: 2rem;
+    }
+
+    .condiciones {
+        margin-top: var(--espacio-s);
+    }
+
+    .acciones-vacante {
+        gap: var(--espacio-m);
+    }
+
+    .vacante-telefono {
+        order: 4;
+    }
+
+    .vacante-final {
+        order: 2;
+    }
+
+    .vacante-enviada .postular-boton {
+        display: flex;
+    }
+}
+
+
+/* ==========================================================================
+   8. DETALLE DE VACANTE
+   ========================================================================== */
+
+.atras-detalle {
+    margin-top: 2rem;
+    margin-left: var(--espacio-s);
+    margin-bottom: var(--espacio-l);
+}
+
+.encabezado-detalle {
+    padding-bottom: var(--espacio-m);
+    width: fit-content;
+}
+
+.resumen-detalle {
+    display: flex;
+    flex-direction: column;
+}
+
+.empresa-detalle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-blanco);
+    border: 1.5px solid var(--color-gris);
+    border-radius: var(--radio);
+    margin-top: var(--espacio-m);
+    box-shadow: var(--sombra);
+    width: fit-content;
+}
+
+.empresa-detalle img {
+    display: block;
+    width: 7rem;
+}
+
+.empresa-nombre {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.empresa-ver-mas {
+    border: none;
+    background: var(--color-blanco);
+    color: var(--color-azul-marino);
+    text-decoration: underline;
+}
+
+.condiciones-detalle {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-s);
+    padding-top: var(--espacio-s);
+}
+
+.cuerpo-detalle {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: var(--espacio-m);
+}
+
+.lista-detalle {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+}
+
+.postular-detalle {
+    width: 100%;
+}
+
+@media (min-width: 48rem) {
+    .empresa-detalle {
+        width: 100%;
+    }
+
+    .empresa-detalle img {
+        width: 12rem;
+    }
+
+    .atras-detalle {
+        margin-left: 2rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    .cuerpo-detalle {
+        gap: var(--espacio-m);
+    }
+
+    .empresa-nombre {
+        align-items: center;
+    }
+
+    .resumen-detalle {
+        justify-content: space-around;
+    }
+
+    .empresa-detalle {
+        padding: var(--espacio-m);
+        flex-direction: column;
+        align-items: center;
+        width: fit-content;
+    }
+
+    .especificaciones {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
+
+
+/* ==========================================================================
+   9. BUSCADOR Y FILTROS
+   ========================================================================== */
+
+.buscador {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: var(--espacio-s);
+    width: 100%;
+    max-width: 50rem;
+    min-width: 0;
+    padding: var(--espacio-m);
+    border: 1px solid var(--color-gris);
+    border-radius: 5rem;
+    background-color: var(--color-blanco);
+    box-shadow: var(--sombra);
+}
+
+.separador {
+    height: 1.5rem;
+    border-left: 1px solid var(--color-gris);
+}
+
+.buscar-boton {
+    min-width: 3.5rem;
+    padding: 0.75rem;
+    border-radius: 1.25rem;
+    width: auto;
+}
+
+.buscador input {
+    width: 100%;
+    min-width: 0;
+    min-height: 3.5rem;
+    padding: var(--espacio-s);
+    border: 0;
+    border-radius: var(--radio);
+    background-color: var(--color-blanco);
+    color: var(--color-azul-marino);
+    font-size: var(--texto-base);
+}
+
+.buscador input::placeholder {
+    color: var(--color-azul-marino);
+    opacity: 1;
+}
+
+.buscar-icono,
+.buscar-boton span {
+    display: none;
+}
+
+.buscar-boton img {
+    display: block;
+}
+
+.filtros .btn {
+    flex: 1 1 9.25rem;
+    min-width: min(100%, 9.25rem);
+    padding-inline: 0.75rem;
+    overflow-wrap: normal;
+}
+
+@media (min-width: 48rem) {
+    .buscador {
+        flex: 1 1 24rem;
+    }
+}
+
+@media (min-width: 64rem) {
+    .buscador {
+        border-radius: 2rem;
+    }
+
+    .buscar-icono {
+        display: block;
+    }
+
+    .buscar-boton {
+        padding-inline: 1.5rem;
+        border-radius: var(--radio);
+    }
+
+    .buscar-boton span {
+        display: inline;
+    }
+
+    .buscar-boton img {
+        display: none;
+    }
+}
+
+
+/* ==========================================================================
+   10. FORMULARIOS: CAMPOS
+   ========================================================================== */
+
+/* Formulario */
+.campos {
+    display: grid;
+    gap: var(--espacio-m);
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-s);
+}
+
+.campo label,
+.opciones legend {
+    font-weight: 700;
+}
+
+.campo input,
+.campo textarea {
+    width: 100%;
+    min-height: 3.5rem;
+    padding: var(--espacio-s) var(--espacio-m);
+    border: 1.5px solid var(--color-azul-marino);
+    border-radius: var(--radio);
+}
+
+/* El teléfono solo aparece si eligen "Teléfono" */
+.campo-telefono {
+    display: none;
+}
+
+.formulario,
+.formulario-seccion {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.campo-formulario {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-s);
+}
+
+.campo-formulario label {
+    font-weight: 700;
+}
+
+.campo-formulario-entrada {
+    padding: 0.75rem 1rem;
+    border: 2px solid var(--color-gris);
+    border-radius: var(--radio);
+    background-color: var(--color-blanco);
+}
+
+.campo-formulario-error {
+    color: var(--color-error);
+    font-weight: 700;
+}
+
+.campo-formulario-invalido .campo-formulario-entrada,
+.campo-formulario-invalido .zona-carga {
+    border-color: var(--color-error);
+}
+
+.separador-texto {
+    text-align: center;
+}
+
+.titulo-centrado,
+.paso-titulo {
+    font-size: var(--texto-base);
+}
+
+.titulo-centrado {
+    text-align: center;
+}
+
+.campo-carga-titulo {
+    font-size: var(--texto-h2);
+}
+
+@media (min-width: 48rem) {
+    .campos {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .campo-completo {
+        grid-column: 1 / -1;
+    }
+}
+
+
+/* ==========================================================================
+   11. FORMULARIOS: OPCIONES Y CASILLAS
+   ========================================================================== */
+
+.opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--espacio-m);
+    border: none;
+}
+
+.opcion {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-s);
+    min-height: 3rem;
+}
+
+.opcion input {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.grupo-opciones {
+    border: 0;
+}
+
+.grupo-opciones legend {
+    margin-bottom: var(--espacio-s);
+    font-weight: 700;
+}
+
+.grupo-opciones-lista {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.grupo-opciones-item {
+    position: relative;
+}
+
+.grupo-opciones-entrada {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 1.125rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: auto 0;
+    accent-color: var(--color-azul-marino);
+}
+
+.grupo-opciones-etiqueta {
+    display: block;
+    padding: 0.75rem var(--espacio-m) 0.75rem 3rem;
+    border-radius: var(--radio);
+    background-color: var(--color-blanco);
+}
+
+.grupo-opciones-item:hover .grupo-opciones-etiqueta,
+.grupo-opciones-entrada:focus + .grupo-opciones-etiqueta,
+.grupo-opciones-entrada:checked + .grupo-opciones-etiqueta {
+    border-color: var(--color-azul-marino);
+    background-color: var(--color-azul-claro);
+}
+
+.casilla {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.casilla-entrada {
+    display: grid;
+    flex: 0 0 1.5rem;
+    place-content: center;
+    width: 1.5rem;
+    height: 1.5rem;
+    margin: 0.375rem 0 0;
+    appearance: none;
+    border: 2px solid var(--color-azul-marino);
+    border-radius: 0.25rem;
+    background-color: var(--color-blanco);
+    color: var(--color-azul-marino);
+    cursor: pointer;
+}
+
+.casilla-entrada::before {
+    width: 0.7rem;
+    height: 0.4rem;
+    transform: rotate(-45deg) scale(0);
+    border-bottom: 3px solid currentColor;
+    border-left: 3px solid currentColor;
+    content: "";
+}
+
+.casilla-entrada:checked::before {
+    transform: rotate(-45deg) scale(1);
+}
+
+.casilla-etiqueta {
+    flex: 1;
+    padding: var(--espacio-s) 0;
+    cursor: pointer;
+}
+
+@media (min-width: 48rem) {
+    .grupo-opciones-lista {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+}
+
+
+/* ==========================================================================
+   12. FORMULARIOS: EXPERIENCIA Y CHIPS
+   ========================================================================== */
+
+.tarjeta-experiencia {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem;
+    border: 2px solid var(--color-gris);
+    border-radius: var(--radio);
+}
+
+.tarjeta-experiencia-encabezado {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--espacio-s) var(--espacio-m);
+}
+
+.lista-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    list-style: none;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0 0.25rem 0 var(--espacio-m);
+    border: 2px solid var(--color-gris);
+    border-radius: var(--radio);
+}
+
+.chip-quitar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.chip-icono {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+
+/* ==========================================================================
+   13. FORMULARIOS: CARGA DE ARCHIVOS
+   ========================================================================== */
+
+.zona-carga {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-m);
+    padding: 1.5rem var(--espacio-m);
+    border: 2px solid var(--color-gris);
+    border-radius: var(--radio);
+    text-align: center;
+}
+
+.zona-carga-icono {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    margin: 0 auto;
+    object-fit: contain;
+}
+
+.zona-carga-texto {
+    font-weight: 700;
+}
+
+.zona-carga-datos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem var(--espacio-m);
+}
+
+.zona-carga-entrada {
+    padding: 0.75rem 0;
+}
+
+
+/* ==========================================================================
+   14. DECISIÓN (ACEPTAR / RECHAZAR)
+   ========================================================================== */
+
+/* Aceptar / Rechazar: los botones son labels de radios escondidos */
+.decision {
+    position: absolute;
+    opacity: 0;
+}
+
+.decision-aceptar:not(:checked) ~ .mostrar-si-acepta,
+.decision-aceptar:not(:checked) ~ * .mostrar-si-acepta,
+.decision-rechazar:not(:checked) ~ .mostrar-si-rechaza,
+.decision-rechazar:not(:checked) ~ * .mostrar-si-rechaza,
+.decision:checked ~ .ocultar-si-decide,
+.decision:checked ~ * .ocultar-si-decide {
+    display: none;
+}
+
+.decision-aceptar:focus-visible ~ .botones .btn-primario,
+.decision-rechazar:focus-visible ~ .botones .btn-secundario {
+    outline: 3px solid var(--color-coral);
+    outline-offset: 2px;
+}
+
+
+/* ==========================================================================
+   15. MENÚ DESPLEGABLE
+   ========================================================================== */
+
+/* Lista que se abre con la flecha */
+.desplegable {
+    position: relative;
+}
+
+.desplegable summary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 3rem;
+    min-height: 3rem;
+    list-style: none;
+    cursor: pointer;
+}
+
+.desplegable-lista {
+    position: absolute;
+    left: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    min-width: 16rem;
+    padding: var(--espacio-s);
+    background-color: var(--color-blanco);
+    border: 1.5px solid var(--color-gris);
+    border-radius: var(--radio);
+    box-shadow: var(--sombra);
+}
+
+.desplegable-lista a {
+    display: flex;
+    align-items: center;
+    min-height: 3rem;
+    padding: 0 var(--espacio-s);
+    color: var(--color-azul-marino);
+    text-decoration: none;
+}
+
+
+/* ==========================================================================
+   16. PASOS
+   ========================================================================== */
+
+.lista-pasos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-l);
+}
+
+.paso {
+    display: grid;
+    grid-template-columns: 2.5rem 1fr;
+    gap: var(--espacio-s) var(--espacio-m);
+    align-items: start;
+}
+
+.paso-numero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background-color: var(--color-azul-claro);
+    font-weight: 700;
+}
+
+.paso-contenido {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--espacio-s);
+}
+
+
+/* ==========================================================================
+   17. ELEMENTOS DE APOYO
+   ========================================================================== */
+
+.ilustracion {
+    display: block;
+    margin: var(--espacio-l) auto;
+}
+
+.texto-coral {
+    display: block;
+    color: var(--color-coral);
+}
